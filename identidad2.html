@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Visual de mi Identidad y Emociones</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #eef2f3 0%, #8e9eab 100%);
+            padding: 20px 10px;
+            text-align: center;
+            min-height: 100vh;
+        }
+
+        /* Título más grande y de color Menta */
+        h1 {
+            color: #00b894; /* Color Verde Menta */
+            font-size: clamp(2.3rem, 4.5vw, 3.8rem); /* Tamaño más grande */
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para resaltar */
+        }
+
+        .subtitulo {
+            color: #444;
+            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+            margin-bottom: 25px;
+        }
+
+        /* Contenedor principal responsive */
+        .mapa-contenedor {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            width: 100%;
+            max-width: 1700px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        /* Líneas SVG para computadora */
+        .lineas-conexion {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        line {
+            stroke-width: 4;
+            stroke-dasharray: 6;
+        }
+
+        /* Columnas */
+        .columna {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .centro {
+            width: 100%;
+            z-index: 2;
+            order: -1;
+        }
+
+        /* Estilo de las tarjetas */
+        .tarjeta {
+            background-color: #ffffff;
+            border-radius: 14px;
+            padding: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .tarjeta:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 22px rgba(0,0,0,0.18);
+        }
+
+        /* Imágenes grandes */
+        .tarjeta img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .tarjeta h3 {
+            margin: 12px 0 6px 0;
+            font-size: clamp(1rem, 1.3vw, 1.2rem);
+            text-transform: uppercase;
+        }
+
+        .tarjeta p {
+            font-size: clamp(0.85rem, 1.05vw, 0.95rem);
+            color: #444;
+            line-height: 1.3;
+        }
+
+        /* Colores por tarjeta */
+        .card-perseverancia { border: 3px solid #ff6b6b; background: #fff5f5; }
+        .card-perseverancia h3 { color: #d63031; }
+
+        .card-creatividad { border: 3px solid #feca57; background: #fffdf0; }
+        .card-creatividad h3 { color: #e67e22; }
+
+        .card-entorno { border: 3px solid #48dbfb; background: #f0faff; }
+        .card-entorno h3 { color: #0abde3; }
+
+        .card-cuerpo { border: 3px solid #ff9ff3; background: #fff0fa; }
+        .card-cuerpo h3 { color: #db0075; }
+
+        .card-enojo { border: 3px solid #ff3838; background: #fff0f0; }
+        .card-enojo h3 { color: #c0392b; }
+
+        .card-alegria { border: 3px solid #1dd1a1; background: #f0fff9; }
+        .card-alegria h3 { color: #10ac84; }
+
+        .card-tranquilidad { border: 3px solid #54a0ff; background: #f0f5ff; }
+        .card-tranquilidad h3 { color: #2e86de; }
+
+        .card-determinacion { border: 3px solid #ff9f43; background: #fff8f0; }
+        .card-determinacion h3 { color: #ee5253; }
+
+        .card-tristeza { border: 3px solid #5f27cd; background: #f8f5ff; }
+        .card-tristeza h3 { color: #341f97; }
+
+        .card-empatia { border: 3px solid #00d2d3; background: #f0ffff; }
+        .card-empatia h3 { color: #01a3a4; }
+
+        /* Tarjeta central */
+        .card-centro {
+            border: 4px solid #1e3c72;
+            background: #ffffff;
+            padding: 20px;
+        }
+
+        .card-centro img {
+            height: auto;
+            max-height: 420px;
+            object-fit: contain;
+        }
+
+        .card-centro h3 {
+            color: #1e3c72;
+            font-size: 1.4rem;
+        }
+
+        /* Vista en Computadora */
+        @media (min-width: 900px) {
+            .mapa-contenedor {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 40px;
+            }
+
+            .columna {
+                width: 31%;
+            }
+
+            .centro {
+                width: 32%;
+                order: 0;
+            }
+
+            .lineas-conexion {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Título Principal en Menta y más grande -->
+    <h1>Mapa Visual de mi Identidad y Emociones</h1>
+    <p class="subtitulo">Exploración de valores, expresiones y sentimientos</p>
+
+    <div class="mapa-contenedor">
+
+        <!-- Líneas coloridas (Computadora) -->
+        <svg class="lineas-conexion">
+            <!-- Izquierda a Centro -->
+            <line x1="31%" y1="10%" x2="38%" y2="50%" stroke="#ff6b6b" />
+            <line x1="31%" y1="30%" x2="38%" y2="50%" stroke="#feca57" />
+            <line x1="31%" y1="50%" x2="38%" y2="50%" stroke="#48dbfb" />
+            <line x1="31%" y1="70%" x2="38%" y2="50%" stroke="#ff9ff3" />
+            <line x1="31%" y1="90%" x2="38%" y2="50%" stroke="#ff3838" />
+
+            <!-- Derecha a Centro -->
+            <line x1="69%" y1="10%" x2="62%" y2="50%" stroke="#1dd1a1" />
+            <line x1="69%" y1="30%" x2="62%" y2="50%" stroke="#54a0ff" />
+            <line x1="69%" y1="50%" x2="62%" y2="50%" stroke="#ff9f43" />
+            <line x1="69%" y1="70%" x2="62%" y2="50%" stroke="#5f27cd" />
+            <line x1="69%" y1="90%" x2="62%" y2="50%" stroke="#00d2d3" />
+        </svg>
+
+        <!-- COLUMNA IZQUIERDA -->
+        <div class="columna">
+            <div class="tarjeta card-perseverancia">
+                <img src="perseverancia.JPG" alt="Perseverancia">
+                <h3>Perseverancia</h3>
+                <p>Superar los obstáculos diariamente con constante esfuerzo.</p>
+            </div>
+
+            <div class="tarjeta card-creatividad">
+                <img src="creatividad.JPG" alt="Creatividad">
+                <h3>Creatividad</h3>
+                <p>Expresar mis ideas únicas a través del arte y la imaginación.</p>
+            </div>
+
+            <div class="tarjeta card-entorno">
+                <img src="diaadia.JPG" alt="Interacción con el entorno">
+                <h3>Interacción con el Entorno</h3>
+                <p>La forma activa en que me relaciono y convivo con los demás.</p>
+            </div>
+
+            <div class="tarjeta card-cuerpo">
+                <img src="cuerpo.JPG" alt="Mi cuerpo comunica">
+                <h3>Mi Cuerpo Comunica</h3>
+                <p>Expresar pensamientos y emociones con gestos y postura.</p>
+            </div>
+
+            <div class="tarjeta card-enojo">
+                <img src="enojo.JPG" alt="Enojo">
+                <h3>Enojo</h3>
+                <p>Una emoción que me ayuda a reconocer injusticias y poner límites.</p>
+            </div>
+        </div>
+
+        <!-- COLUMNA CENTRO -->
+        <div class="centro">
+            <div class="tarjeta card-centro">
+                <img src="imagencentral.JPG" alt="Mi Yo Interior">
+                <h3>Mi Yo Interior</h3>
+                <p>El punto central donde se conectan todas mis emociones, acciones y valores.</p>
+            </div>
+        </div>
+
+        <!-- COLUMNA DERECHA -->
+        <div class="columna">
+            <div class="tarjeta card-alegria">
+                <img src="alegria.JPG" alt="Alegría">
+                <h3>Alegría</h3>
+                <p>Momentos de felicidad compartidos con amigos y seres queridos.</p>
+            </div>
+
+            <div class="tarjeta card-tranquilidad">
+                <img src="tranquilidad.JPG" alt="Tranquilidad">
+                <h3>Tranquilidad</h3>
+                <p>Espacios de calma, paz mental y reflexión en mi día a día.</p>
+            </div>
+
+            <div class="tarjeta card-determinacion">
+                <img src="determinacion.JPG" alt="Determinación">
+                <h3>Determinación</h3>
+                <p>La fuerza e impulso constante para cumplir mis metas.</p>
+            </div>
+
+            <div class="tarjeta card-tristeza">
+                <img src="tristeza.JPG" alt="Tristeza">
+                <h3>Tristeza</h3>
+                <p>Un sentimiento necesario para procesar momentos difíciles y sanar.</p>
+            </div>
+
+            <div class="tarjeta card-empatia">
+                <img src="respeto.JPG" alt="Respeto y Empatía">
+                <h3>Respeto y Empatía</h3>
+                <p>Comprender y escuchar atentamente a las personas a mi alrededor.</p>
+            
+
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+<div style="text-align: center; margin: 30x 0;">
+                    <button onclick="history.back()" style="padding:  10px 20px; font-size: 16px; cursor: pointer;">regresar</button>
+                </div>
+</body>
+</html>

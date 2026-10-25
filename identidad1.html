@@ -1,0 +1,403 @@
+ 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Visual de Nuestra Identidad y Emociones</title>
+    <style>
+        /* Variables de Colores Estilo Editorial (Beige / Terrosos) */
+        :root {
+            --bg-body: #f4efe9;
+            --card-pink: #f6e3db;
+            --card-green: #d2d8c9;
+            --btn-terracotta: #d98871;
+            --btn-olive: #5f6453;
+            --text-dark: #2c2825;
+            --text-muted: #736b63;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Barra de Navegación */
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--btn-terracotta);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-talk {
+            background-color: var(--btn-terracotta);
+            color: white;
+            padding: 0.6rem 1.4rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* Sección Principal (Hero) centrada sin imagen */
+        .hero {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .hero-sub {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .hero-title {
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            color: var(--btn-terracotta);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Titulares de Sección */
+        .section-label {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--btn-terracotta);
+            padding-bottom: 0.3rem;
+            display: inline-block;
+        }
+
+        /* Grilla de Tarjetas */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .card-box {
+            border-radius: 20px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 250px;
+        }
+
+        .card-pink {
+            background-color: var(--card-pink);
+        }
+
+        .card-green {
+            background-color: var(--card-green);
+        }
+
+        .card-box h4 {
+            font-size: 1.05rem;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        .card-box p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .card-btn {
+            width: 35px;
+            height: 35px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1rem;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        /* Banner de Reflexión Final y Botón de Enlace */
+        .banner-final {
+            background-color: #ded8ce;
+            border-radius: 20px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            align-items: center;
+        }
+
+        .banner-final h2 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            color: var(--text-dark);
+        }
+
+        .banner-final p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-style: italic;
+            line-height: 1.6;
+            max-width: 800px;
+        }
+
+        .btn-enlace-grafica {
+            background-color: var(--btn-terracotta);
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .btn-enlace-grafica:hover {
+            background-color: #c0735e;
+            transform: translateY(-2px);
+        }
+
+        /* Pie de página */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #dcd5cb;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Menú de Navegación Interior -->
+        <header>
+            <nav>
+                <div class="logo">:3M</div>
+                <ul class="nav-links">
+                    <li><a href="#cuestionario">Cuestionario</a></li>
+                    <li><a href="#autoevaluacion">Autoevaluación</a></li>
+                    <li><a href="#cierre">Cierre</a></li>
+                    <li><a href="#reflexion">Reflexión Final</a></li>
+                </ul>
+               <img src="respeto.JPG" alt="Respeto y Empatía" width="160">
+            </nav>
+        </header>
+
+        <!-- Encabezado Principal (Centrado sin imagen) -->
+        <section class="hero">
+            <p class="hero-sub">Mapa Visual de la Identidad</p>
+            <h1 class="hero-title">MAPA VISUAL DE NUESTRA IDENTIDAD Y EMOCIONES</h1>
+            <p class="hero-desc">Representa el mapa visual de nuestra identidad y emociones a través de una silueta. La silueta funciona como el eje central de quienes somos, mientras que las imágenes y acciones a su alrededor simbolizan nuestras fortalezas, experiencias cotidianas y las emociones que experimentamos con mayor frecuencia.</p>
+        </section>
+
+        <!-- Sección 1: Cuestionario del Proyecto -->
+        <p class="section-label" id="cuestionario">CUESTIONARIO SOBRE EL PROYECTO</p>
+        <div class="cards-grid">
+            
+            <div class="card-box card-pink">
+                <div>
+                    <h4>¿Qué representa?</h4>
+                    <p>Representa el mapa visual de nuestra identidad y emociones a través de una silueta. La silueta funciona como el eje central de quienes somos, mientras que las imágenes y acciones a su alrededor simbolizan nuestras fortalezas, experiencias cotidianas y las emociones que experimentamos con mayor frecuencia.</p>
+                </div>
+                
+            </div>
+
+            <div class="card-box card-green">
+                <div>
+                    <h4>¿Qué elementos utilizaste y qué significan?</h4>
+                    <p>Utilizamos la silueta rodeada de fotografías e ilustraciones de acciones concretas. Cada imagen del collage simboliza un aspecto de nuestra fortaleza interna, creatividad y la forma en que interactuamos con el entorno.</p>
+                </div>
+                
+            </div>
+
+            <div class="card-box card-pink">
+                <div>
+                    <h4>¿Qué emoción o aspecto de tu identidad quisiste expresar?</h4>
+                    <p>Quisimos expresar la perseverancia y la autenticidad como partes clave de identidad, junto con una combinación de tranquilidad y determinación, que son nuestras emociones predominantes.</p>
+                </div>
+                
+            </div>
+
+            <div class="card-box card-green">
+                <div>
+                    <h4>¿Qué descubriste sobre ti durante la actividad?</h4>
+                    <p>Descubrimos que proyectamos nuestros estados de ánimo a través de representaciones visuales y corporales, y que muchas de nuestras fortalezas se reflejan directamente en las acciones que realizamos día a día.</p>
+                </div>
+                
+            </div>
+
+        </div>
+
+        <!-- Sección 2: Autoevaluación -->
+        <p class="section-label" id="autoevaluacion">AUTOEVALUACIÓN</p>
+        <div class="cards-grid">
+
+            <div class="card-box card-green">
+                <div>
+                    <h4>¿Qué puede comunicar nuestro cuerpo sin utilizar palabras?</h4>
+                    <p>Nuestro cuerpo comunica estados de ánimo, actitudes, nivel de confianza, seguridad, cansancio o apertura hacia los demás.</p>
+                </div>
+                
+            </div>
+
+            <div class="card-box card-pink">
+                <div>
+                    <h4>¿Cómo expresamos alegría, tristeza, enojo, nervios o seguridad mediante el cuerpo?</h4>
+                    <p>Mediante la postura, gestos faciales y energía del movimiento.</p>
+                </div>
+                
+            </div>
+
+            <div class="card-box card-green">
+                <div>
+                    <h4>¿Por qué es importante respetar la forma en que otras personas expresan sus emociones?</h4>
+                    <p>Porque cada persona procesa e interpreta sus vivencias de manera única. Respetar sus formas de expresión nos hace más empáticos, evita juicios equivocados y fomenta una buena convivencia.</p>
+                </div>
+                
+            </div>
+
+        </div>
+
+        <!-- Sección 3: Cierre – Reflexión Grupal -->
+        <p class="section-label" id="cierre">CIERRE – REFLEXIÓN GRUPAL</p>
+        <div class="cards-grid">
+
+            <div class="card-box card-pink">
+                <div>
+                    <h4>¿Qué aprendí sobre mí?</h4>
+                    <p>Aprendimos a reconocer de forma consciente los elementos visuales y físicos que definen nuestra personalidad e identidad.</p>
+                </div>
+                
+            </div>
+
+            <div class="card-box card-green">
+                <div>
+                    <h4>¿Qué descubrí sobre la manera en que expreso mis emociones?</h4>
+                    <p>Descubrimos que el lenguaje corporal y el arte visual son importantes para liberar lo que sentimos cuando no sabemos cómo decirlo con palabras.</p>
+                </div>
+                
+            </div>
+
+            <div class="card-box card-pink">
+                <div>
+                    <h4>¿Qué diferencias encontré entre mi forma de expresarme y la de mis compañeros?</h4>
+                    <p>Noté que mientras algunos compañeros reflejan sus emociones de forma muy directa y enérgica, otros prefieren ser más sutiles.</p>
+                </div>
+               
+            </div>
+
+            <div class="card-box card-green">
+                <div>
+                    <h4>¿Por qué debemos respetar las diferentes formas de expresión?</h4>
+                    <p>Porque la diversidad de expresiones demuestra que no existe una sola manera correcta de sentir o manifestar quienes somos.</p>
+                </div>
+                
+            </div>
+
+            <div class="card-box card-pink">
+                <div>
+                    <h4>¿Cómo puede nuestro cuerpo comunicar emociones incluso cuando no hablamos?</h4>
+                    <p>A través de microexpresiones, la tensión o relajación muscular, y la disposición del cuerpo en el espacio respecto a las otras personas.</p>
+                </div>
+                
+            </div>
+
+        </div>
+
+        <!-- Banner de Reflexión Final y Botón Hacia la Otra Página -->
+        <div class="banner-final" id="reflexion">
+            <h2>Reflexión Final: El cuerpo como medio de comunicación</h2>
+            <p>"Nuestro cuerpo habla sin necesidad de decir una sola palabra. Con un gesto, la postura o la mirada, transmitimos lo que sentimos, ya sea alegría, enojo, nervios o seguridad. Trabajar en este proyecto nos ayudó a darnos cuenta de que el cuerpo también expresa quiénes somos y cómo nos sentimos en cada momento."</p>
+            
+            <!-- Botón que manda automáticamente a la otra página -->
+            <div>
+                <a href="identidad2.html" class="btn-enlace-grafica">Ver representación gráfica de mis emociones</a>
+            </div>
+        </div>
+
+        <!-- Pie de página -->
+        <footer>
+            <p>&copy; 2026 Mapa Visual de la Identidad y Emociones</p>
+            <p>Diseño sobre la Identidad</p>
+        </footer>
+
+    </div>
+    <div style="text-align: center; margin: 30x 0;">
+                    <button onclick="history.back()" style="padding:  10px 20px; font-size: 16px; cursor: pointer;">regresar</button>
+                </div>
+
+</body>
+</html>

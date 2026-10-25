@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portada - Mapa Visual de la Identidad</title>
+    <style>
+        :root {
+            --bg-color: #F7F3EE;
+            --card-bg: #FFFFFF;
+            --primary-color: #D98870;
+            --text-main: #3C3C3C;
+            --text-muted: #666666;
+            --border-color: #E8DCD4;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .portada-container {
+            background-color: var(--card-bg);
+            width: 100%;
+            max-width: 600px;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .escuela {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .subtitulo {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+        }
+
+        .seccion {
+            background-color: var(--bg-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        .seccion h2 {
+            font-size: 0.95rem;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .seccion p {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        .creadoras-list {
+            list-style: none;
+        }
+
+        .creadoras-list li {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            padding: 4px 0;
+        }
+
+        .btn-entrar {
+            display: block;
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 30px;
+            transition: opacity 0.2s ease;
+            box-shadow: 0 4px 12px rgba(217, 136, 112, 0.3);
+        }
+
+        .btn-entrar:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 480px) {
+            .portada-container {
+                padding: 25px 15px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portada-container">
+        <!-- Institución -->
+        <div class="escuela">
+            CENTRO DE BACHILLERATO TECNOLÓGICO INDUSTRIAL Y DE SERVICIOS No. 61
+        </div>
+
+        <!-- Título Principal -->
+        <h1>Mapa Visual de la Identidad</h1>
+        <p class="subtitulo"></p>
+
+        <!-- Creadoras -->
+        <div class="seccion">
+            <h2>Creadoras</h2>
+            <ul class="creadoras-list">
+                <li>Fátima Hernández Hernández</li>
+                <li>Montserrat López Cruz</li>
+                <li>Dulce María Morales Luna</li>
+                <li>Michelle Meléndez Hernández</li>
+                <li>Dana Jimena Ramírez León</li>
+            </ul>
+        </div>
+
+        <!-- Actividad -->
+        <div class="seccion">
+            <h2>Actividad 6</h2>
+            <p>"asi me expreso:identidad,emociones y cuerpo"</p>
+        </div>
+
+        <!-- Propósito -->
+        <div class="seccion">
+            <h2>Propósito</h2>
+            <p>Que el estudiante explore una forma de expresion artistica para 
+            representar aspectos de su identidad,emociones,
+            fortalezas o experiencias, y que reflexione sobe como el 
+            cuerpo funciona como un medio de comunicacion. </p>
+        </div>
+
+        <!-- Grado y Grupo -->
+        <div class="seccion">
+            <h2>Grupo y Grado</h2>
+            <p>5Aprog</p>
+        </div>
+
+        <!-- Botón para pasar a la página principal del mapa -->
+        <a href="identidad1.html" class="btn-entrar">Ver pagina de Identidad</a>
+    </div>
+
+
+</body>
+</html>
